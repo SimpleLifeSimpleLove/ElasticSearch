@@ -6,5 +6,6 @@ package com.wxx.utils;
  */
 public class ESConst {
 
-    public static final String ES_INDEX = "wxx_index";
+//    public static final String ES_INDEX = "wxx_index";
+    public static final String ES_INDEX = "jd_books";
 }
