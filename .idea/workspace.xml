@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e18c2119-a8d6-415d-84f0-c50a3b0f99bc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/es-api/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/es-api/note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/es-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/es-api/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/es-api/src/test/java/com/wxx/EsApiApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/es-api/src/test/java/com/wxx/EsApiApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +68,39 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
-  <component name="RunManager" selected="JUnit.EsApiApplicationTests.testDeleteIndex">
+  <component name="RunManager" selected="JUnit.EsApiApplicationTests.testSearch">
+    <configuration name="EsApiApplicationTests.testAddDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="es-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wxx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wxx" />
+      <option name="MAIN_CLASS_NAME" value="com.wxx.EsApiApplicationTests" />
+      <option name="METHOD_NAME" value="testAddDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EsApiApplicationTests.testBulkDocument" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="es-api" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wxx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.wxx" />
+      <option name="MAIN_CLASS_NAME" value="com.wxx.EsApiApplicationTests" />
+      <option name="METHOD_NAME" value="testBulkDocument" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EsApiApplicationTests.testCreatIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="es-api" />
       <extension name="coverage">
@@ -100,7 +133,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EsApiApplicationTests.testExistIndex" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EsApiApplicationTests.testSearch" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="es-api" />
       <extension name="coverage">
         <pattern>
@@ -110,7 +143,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.wxx" />
       <option name="MAIN_CLASS_NAME" value="com.wxx.EsApiApplicationTests" />
-      <option name="METHOD_NAME" value="testExistIndex" />
+      <option name="METHOD_NAME" value="testSearch" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -125,9 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.EsApiApplicationTests.testDeleteIndex" />
+        <item itemvalue="JUnit.EsApiApplicationTests.testSearch" />
+        <item itemvalue="JUnit.EsApiApplicationTests.testBulkDocument" />
         <item itemvalue="JUnit.EsApiApplicationTests.testCreatIndex" />
-        <item itemvalue="JUnit.EsApiApplicationTests.testExistIndex" />
+        <item itemvalue="JUnit.EsApiApplicationTests.testDeleteIndex" />
+        <item itemvalue="JUnit.EsApiApplicationTests.testAddDocument" />
       </list>
     </recent_temporary>
   </component>
@@ -145,7 +180,8 @@
       <workItem from="1606032247146" duration="1876000" />
       <workItem from="1606034197839" duration="696000" />
       <workItem from="1606035645393" duration="1180000" />
-      <workItem from="1606046932725" duration="7603000" />
+      <workItem from="1606046932725" duration="7913000" />
+      <workItem from="1606116947818" duration="4178000" />
     </task>
     <servers />
   </component>
@@ -161,22 +197,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606031232796" />
-    <state width="1877" height="401" key="GridCell.Tab.0.bottom" timestamp="1606050577061">
+    <state width="1877" height="272" key="GridCell.Tab.0.bottom" timestamp="1606121658222">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606050577061" />
-    <state width="1877" height="401" key="GridCell.Tab.0.center" timestamp="1606050577061">
+    <state width="1877" height="272" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1606121658222" />
+    <state width="1877" height="272" key="GridCell.Tab.0.center" timestamp="1606121658221">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606050577061" />
-    <state width="1877" height="401" key="GridCell.Tab.0.left" timestamp="1606050577060">
+    <state width="1877" height="272" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1606121658221" />
+    <state width="1877" height="272" key="GridCell.Tab.0.left" timestamp="1606121658221">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606050577060" />
-    <state width="1877" height="401" key="GridCell.Tab.0.right" timestamp="1606050577061">
+    <state width="1877" height="272" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1606121658221" />
+    <state width="1877" height="272" key="GridCell.Tab.0.right" timestamp="1606121658222">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="401" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606050577061" />
+    <state width="1877" height="272" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1606121658222" />
     <state width="1877" height="401" key="GridCell.Tab.1.bottom" timestamp="1606036716378">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

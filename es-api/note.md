@@ -1,12 +1,39 @@
 # ElasticSearch
 
-* ES中的类型：
-    * 字符串类型：text、keyword
-    * 数值类型：long、integer、short、byte、double、float、half float、scaled float
-    * 日期类型：date
-    * 布尔值类型：boolean
-    * 二进制类型：binary
-    * 等等......
+## IK分词器
+> 什么是IK分词器？
+* 分词：即把一段中文或者别的划分成一个个关键字，我们在搜索的时候会把自己的信息进行分词，会把数据库中或者索引库中的数据进行分词，然后进行一个匹配操作，默认的中文分词器是将每个字看成一个词，这显然不符合要求，所以我们需要安装中文分词器ik来解决这些问题。
+* 如果要使用中文，建议使用ik分词器！
+* IK提供了两个分词算法：ik_smart 和 ik_max_word，其中ik_smart为最少切分，ik_max_word为最细粒度划分！
+
+```java
+/*
+GET _analyze
+{
+  "analyzer": "ik_smart",
+  "text": "中国共产党"
+}
+
+GET _analyze
+{
+  "analyzer": "ik_max_word",
+  "text": "中国共产党"
+}
+*/
+```
+
+* ik_max_word为最细粒度划分！穷尽词库的可能！字典！
+  * D:\Environment\elasticsearch\elasticsearch-7.6.1\plugins\ik\config下可以配置自己的字典
+
+---
+### ES中的类型：
+
+* 字符串类型：text、keyword
+* 数值类型：long、integer、short、byte、double、float、half float、scaled float
+* 日期类型：date
+* 布尔值类型：boolean
+* 二进制类型：binary
+* 等等......
 
 ## ES索引的基本操作
 ```java
