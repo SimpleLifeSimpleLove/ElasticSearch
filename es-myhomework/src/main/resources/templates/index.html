@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns:v-if="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Easy Search</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+
+    <style>
+        [v-clock] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="pg">
+<div class="page" id="app" v-clock>
+    <div id="mallPage" class=" mallist tmall- page-not-market ">
+
+        <!-- 头部搜索 -->
+        <div id="header" class=" header-list-app">
+            <div class="headerLayout">
+                <div class="headerCon ">
+                    <!-- Logo-->
+                    <h1 id="mallLogo">
+                        <img th:src="@{/images/logo.png}" alt="">
+                    </h1>
+
+                    <div class="header-extra">
+
+                        <!--搜索-->
+                        <div id="mallSearch" class="mall-search">
+                            <form name="searchTop" class="mallSearch-form clearfix">
+                                <fieldset>
+                                    <legend>Search</legend>
+                                    <div class="mallSearch-input clearfix">
+                                        <div class="s-combobox" id="s-combobox-685">
+                                            <div class="s-combobox-input-wrap">
+                                                <input v-model="keyword" type="text" autocomplete="off" value="" id="mq"
+                                                       class="s-combobox-input" aria-haspopup="true">
+                                            </div>
+                                        </div>
+                                        <button type="submit" @click.prevent="searchKey" id="searchbtn">搜索</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <ul class="relKeyTop">
+                                <li><a></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 商品详情页面 -->
+        <div id="content">
+            <div class="main">
+                <!-- 品牌分类 -->
+                <form class="navAttrsForm">
+                    <div class="attrs j_NavAttrs" style="display:block">
+                        <div class="brandAttr j_nav_brand">
+                            <div class="j_Brand attr">
+                                <div class="attrKey">
+                                    商品类型
+                                </div>
+                                <div class="attrValues">
+                                    <ul class="av-collapse row-2">
+                                        <li><a href="#"> 电脑 </a></li>
+                                        <li><a href="#"> 手机 </a></li>
+                                        <li><a href="#"> 平板 </a></li>
+                                        <li><a href="#"> 服装 </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- 商品详情 -->
+                <div v-if="message==='A'">
+                    <div class="view grid-nosku">
+
+                        <div class="product" v-for="result in results">
+                            <div class="product-iWrap">
+                                <!--商品封面-->
+                                <div class="productImg-wrap">
+                                    <a class="productImg" v-bind:href="result.goodUrl" target="_blank">
+                                        <img :src="result.img">
+                                    </a>
+                                </div>
+                                <!--价格-->
+                                <p class="productPrice">
+                                    <em>{{result.price}}</em>
+                                </p>
+                                <!--标题-->
+                                <p class="productTitle">
+                                    <a v-html="result.title"></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-else-if="message==='B'">
+                    <div align="center" style="margin: 250px 0 0 0;font-size:32px;color: #b43ea4;">Easy Search!</div>
+                </div>
+                <div v-else>
+                    <div align="center" style="margin: 250px 0 0 0;font-size:32px;color: #b43ea4;">对不起，没有该类商品.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 前端使用Vue，完成前后端分离 -->
+<script th:src="@{/js/axios.min.js}"></script>
+<script th:src="@{/js/vue.min.js}"></script>
+<script>
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            keyword: '',  // 搜索的关键字
+            results: [],  // 搜索的结果
+            message: 'B'
+        },
+        methods: {
+            searchKey() {
+                var keyword = this.keyword;
+                // console.log(keyword);
+                // 对接后端的接口
+                axios.get('search/' + keyword + '/1/20').then(response=>{  // 请求后端的数据
+                    console.log(response);
+                    this.results = response.data;  // 绑定数据
+                    if (this.results.length === 0) {
+                        this.message = "C";
+                    } else {
+                        this.message = "A";
+                    }
+                })
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>
