@@ -42,7 +42,7 @@ public class GoodsService implements IGoodsService {
     @SneakyThrows
     @Override
     public Boolean parseContent(String keyword) {
-        List<Goods> goods = HtmlParseUtil.parseJDGoods(keyword);
+        List<Goods> goods = HtmlParseUtil.parseGoods(keyword);
         // 把查询的结果放入到 ES 中
         BulkRequest bulkRequest = new BulkRequest();
         bulkRequest.timeout("2m");
@@ -55,39 +55,6 @@ public class GoodsService implements IGoodsService {
         BulkResponse bulk = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
 
         return !bulk.hasFailures();
-    }
-
-    // 实现搜索功能
-    @SneakyThrows
-    @Override
-    public List<Map<String, Object>> searchPage(String keyword, int pageNo, int pageSize) {
-        if (pageNo < 1) {
-            pageNo = 1;
-        }
-
-        // 条件搜索
-        SearchRequest searchRequest = new SearchRequest(ESConst.ES_INDEX_GOODS);
-
-        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-        // 分页
-        sourceBuilder.from(pageNo);
-        sourceBuilder.size(pageSize);
-        // 精准匹配
-        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("title", keyword);
-        sourceBuilder.query(termQueryBuilder);
-        sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
-
-        // 执行搜索
-        searchRequest.source(sourceBuilder);
-        SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
-
-        // 解析结果
-        ArrayList<Map<String, Object>> list = new ArrayList<>();
-        for (SearchHit documentFields : searchResponse.getHits().getHits()) {
-            list.add(documentFields.getSourceAsMap());
-        }
-
-        return list;
     }
 
     // 实现高亮搜索功能
@@ -107,9 +74,11 @@ public class GoodsService implements IGoodsService {
         sourceBuilder.size(pageSize);
         // 精准匹配
 //        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("title", keyword);
-        // 可以匹配汉字
-        MatchQueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("title", keyword);
-        sourceBuilder.query(matchQueryBuilder);
+        // 可以匹配汉字，将 keyword 拆分成一个个字，这些字中有匹配的即可，比如 "洗衣液"，则衣服类产品也会被搜出来
+//        MatchQueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("title", keyword);
+        // 可以匹配汉字，将 keyword 整体匹配，不拆
+        MatchPhraseQueryBuilder queryBuilder = QueryBuilders.matchPhraseQuery("title", keyword);
+        sourceBuilder.query(queryBuilder);
         sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
 
         // 高亮

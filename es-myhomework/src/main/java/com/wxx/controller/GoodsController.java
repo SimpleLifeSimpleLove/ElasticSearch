@@ -19,8 +19,8 @@ public class GoodsController {
     @Autowired
     private IGoodsService iGoodsService ;
 
+    // http://localhost:9090/parse/男装 获取关于 男装 的数据
     // http://localhost:9090/parse/java 获取关于 java 的数据
-    // http://localhost:9090/parse/linux 获取关于 linux 的数据
     @GetMapping("/parse/{keyword}")
     public Boolean parse(@PathVariable("keyword") String keyword) {
         return iGoodsService.parseContent(keyword);

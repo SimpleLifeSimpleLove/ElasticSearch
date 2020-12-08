@@ -18,7 +18,7 @@ import java.util.List;
 @Component
 public class HtmlParseUtil {
 
-    public static List<Goods> parseJDGoods(String keyword) throws Exception {
+    public static List<Goods> parseGoods(String keyword) throws Exception {
         // 获取请求 https://search.jd.com/Search?keyword=java
         String url = "https://search.jd.com/Search?keyword=" + keyword;
 
@@ -47,11 +47,5 @@ public class HtmlParseUtil {
 
         return goodsList;
     }
-
-//    public static void main(String[] args) throws Exception {
-//
-//        HtmlParseUtil.parseJD("码出高效").forEach(System.out::println);
-//        HtmlParseUtil.parseJD("vue").forEach(System.out::println);
-//    }
 
 }

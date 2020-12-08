@@ -12,9 +12,6 @@ public interface IGoodsService {
     // 解析数据放入到 ES 中
     Boolean parseContent(String keyword);
 
-    // 实现搜索功能
-    List<Map<String, Object>> searchPage(String keyword, int pageNo, int pageSize);
-
     // 实现高亮搜索功能
     List<Map<String, Object>> searchPageHighlighterBuilder(String keyword, int pageNo, int pageSize);
 }
